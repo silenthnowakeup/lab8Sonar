@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-int length(char* str)
+int length(const char* str)
 {
     int size = 0;
     int i = 0;
@@ -49,12 +49,10 @@ void merge_sort(int* mas, int l, int r)
     }
     // переписываем сформированную последовательность в исходный массив
     for (int step = 0; step < r - l + 1; step++)
-    {
         mas[l + step] = tmp[step];
-    }
 }
 
-char** sorting(char** str, int* mas, int argc)
+char** sorting(char** str, const int* mas, int argc)
 {
     char* temp;
     for (int i = 0; i < argc - 1; i++)
@@ -69,7 +67,7 @@ char** sorting(char** str, int* mas, int argc)
     return str;
 }
 
-int getSize(char* string)
+int getSize(const char* string)
 {
     int size = 0;
     int pos = 0;
@@ -98,7 +96,7 @@ char* copyString(char* argv, char* string)
     return string;
 }
 
-void printArr(int* arr, int argc)
+void printArr(const int* arr, int argc)
 {
     printf("arr =");
     for (int i = 0; i < argc - 1; i++)
