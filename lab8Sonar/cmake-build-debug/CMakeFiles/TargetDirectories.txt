@@ -1,0 +1,3 @@
+D:/lab8Sonar/cmake-build-debug/CMakeFiles/lab8Sonar.dir
+D:/lab8Sonar/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/lab8Sonar/cmake-build-debug/CMakeFiles/rebuild_cache.dir
