@@ -4,11 +4,11 @@
 
 #ifndef LAB8SONAR_LIBRARY_H
 #define LAB8SONAR_LIBRARY_H
-int length(char*);
+int length(const char*);
 void merge_sort(int*, int, int);
-char** sorting(char**, int*, int);
-int getSize(char*);
+char** sorting(char**, const int*, int);
+int getSize(const char*);
 char* copyString(char*, char*);
-void printArr(int*, int);
+void printArr(const int*, int);
 void printStrings(int, char**);
 #endif //LAB8SONAR_LIBRARY_H
