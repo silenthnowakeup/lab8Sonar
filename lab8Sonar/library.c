@@ -90,7 +90,6 @@ char* copyString(const char* argv, char* string)
         string[i] = argv[i];
         i++;
     }
-    string[i] = '\0';
     return string;
 }
 
