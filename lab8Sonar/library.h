@@ -8,7 +8,7 @@ int length(const char*);
 void merge_sort(int*, int, int);
 char** sorting(char**, const int*, int);
 int getSize(const char*);
-char* copyString(char*, char*);
+char* copyString(const char*, char*);
 void printArr(const int*, int);
 void printStrings(int, char**);
 #endif //LAB8SONAR_LIBRARY_H
