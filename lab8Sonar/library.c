@@ -61,24 +61,23 @@ char** sorting(char** str, const int* mas, int argc)
             {
                 temp = (char*)calloc(mas[j], sizeof(char));
                 temp = str[j];
-                str[j] = temp;
+                str[j] = str[i];
+                str[i]=temp;
             }
     return str;
 }
 
 int getSize(const char* string)
 {
-    int size = 0;
-    int pos = 0;
+    int i = 0;
     while (true)
     {
-        if (string[pos] >= 'a' && string[pos] <= 'z' || string[pos] >= 'A' && string[pos] <= 'Z' || string[pos] == ' ')
+        if (string[i] >= 'a' && string[i] <= 'z' || string[i] >= 'A' && string[i] <= 'Z' || string[i] == ' ')
         {
-            size++;
-            pos++;
+            i++;
         }
         else
-            return size;
+            return i;
     }
 }
 
