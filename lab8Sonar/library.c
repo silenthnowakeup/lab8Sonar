@@ -61,8 +61,7 @@ char** sorting(char** str, const int* mas, int argc)
             {
                 temp = (char*)calloc(mas[j], sizeof(char));
                 temp = str[j];
-                str[j] = str[i];
-                str[i] = temp;
+                str[j] = temp;
             }
     return str;
 }
@@ -83,7 +82,7 @@ int getSize(const char* string)
     }
 }
 
-char* copyString(char* argv, char* string)
+char* copyString(const char* argv, char* string)
 {
     int size = getSize(argv);
     int i = 0;
