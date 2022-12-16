@@ -1,14 +1,10 @@
 //
-// Created by stasc on 13.12.2022.
+// Created by stasc on 09.12.2022.
 //
 
-#ifndef LAB8SONAR_LIBRARY_H
-#define LAB8SONAR_LIBRARY_H
-int length(const char*);
-void merge_sort(int*, int, int);
-char** sorting(char**, const int*, int);
-int getSize(const char*);
-char* copyString(const char*, char*);
-void printArr(const int*, int);
-void printStrings(int, char**);
-#endif //LAB8SONAR_LIBRARY_H
+#ifndef LABA_8_LIBRARY_H
+#define LABA_8_LIBRARY_H
+void merge_sort(int**, int, int);
+void sorting(char** str, int** arr, int size);
+void lengthStr (int** arr, char** str, int size);
+#endif //LABA_8_LIBRARY_H
