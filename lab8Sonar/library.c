@@ -56,12 +56,11 @@ void merge_sort(int* mas, int l, int r)
 char** sorting(char** str, const int* mas, int argc)
 {
     char* temp;
-    temp = (char*)calloc(1, sizeof(char));
     for (int i = 0; i < argc - 1; i++)
         for (int j = 0; j < argc - 1; j++)
             if (mas[j] == length(str[i]))
             {
-                temp = (char*)realloc(temp,mas[j] * sizeof(char));
+                temp = (char*)calloc(mas[j], sizeof(char));
                 temp = str[j];
                 str[j] = str[i];
                 str[i]=temp;
