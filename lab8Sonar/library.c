@@ -1,28 +1,13 @@
 //
-// Created by stasc on 13.12.2022.
+// Created by stasc on 09.12.2022.
 //
-
-#include "library.h"
 
 #include "library.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
-int length(const char* str)
-{
-    int size = 0;
-    int i = 0;
-    while (str[i] != '\0')
-    {
-        size++;
-        i++;
-    }
-    size--;
-    return size;
-}
 
-void merge_sort(int* mas, int l, int r)
+void merge_sort(int** mas, int l, int r)
 {
     if (l == r) return; // границы сомкнулись
     int mid = (l + r) / 2; // определяем середину последовательности
@@ -31,80 +16,50 @@ void merge_sort(int* mas, int l, int r)
     merge_sort(mas, mid + 1, r);
     int i = l;  // начало первого пути
     int j = mid + 1; // начало второго пути
-    int* tmp = (int*)malloc(l+r * sizeof(int)); // дополнительный массив
+    int** tmp = (int**)malloc(2 * sizeof(int*));// дополнительный массив
+    tmp[0] = (int*)malloc(r * sizeof(int));
+    tmp[1] = (int*)malloc (r*sizeof(int));
     for (int step = 0; step < r - l + 1; step++) // для всех элементов дополнительного массива
     {
         // записываем в формируемую последовательность меньший из элементов двух путей
         // или остаток первого пути если j > r
-        if ((j > r) || ((i <= mid) && (mas[i] > mas[j])))
+        if ((j > r) || ((i <= mid) && (mas[1][i] > mas[1][j])))
         {
-            tmp[step] = mas[i];
+            tmp[0][step] = mas[0][i];
+            tmp[1][step] = mas[1][i];
             i++;
         }
         else
         {
-            tmp[step] = mas[j];
+            tmp[0][step] = mas[0][j];
+            tmp[1][step] = mas[1][j];
             j++;
         }
     }
     // переписываем сформированную последовательность в исходный массив
-    for (int step = 0; step < r - l + 1; step++)
-        mas[l + step] = tmp[step];
-    free(tmp);
-}
-
-char** sorting(char** str, const int* mas, int argc)
-{
-    char* temp;
-    for (int i = 0; i < argc - 1; i++)
-        for (int j = 0; j < argc - 1; j++)
-            if (mas[j] == length(str[i]))
-            {
-                temp = str[j];
-                str[j] = str[i];
-                str[i]=temp;
-            }
-    temp = NULL;
-    free(temp);
-    return str;
-}
-
-int getSize(const char* string)
-{
-    int i = 0;
-    while (true)
+    for (int step = 0; step < r - l+1; step++)
     {
-        if (string[i] >= 'a' && string[i] <= 'z' || string[i] >= 'A' && string[i] <= 'Z' || string[i] == ' ')
+        mas[0][l + step] = tmp[0][step];
+        mas[1][l+step] = tmp[1][step];
+    }
+}
+
+void sorting(char** str, int** arr, int size)
+{
+    for(int i = 0; i < size; i++)
+        printf("%s\n", str[arr[0][i]]);
+}
+
+void lengthStr (int** arr, char** str, int size)
+{
+    int j;
+    for(int i = 0; i < size; i++)
+    {
+        j = 0;
+        while(str[i][j] != '\0')
         {
-            i++;
+            j++;
         }
-        else
-            return i;
+        arr[1][i] = j;
     }
-}
-
-char* copyString(const char* argv, char* string)
-{
-    int size = getSize(argv);
-    int i = 0;
-    string = (char*)calloc(size, sizeof(char));
-    while (argv[i] != '\0') {
-        string[i] = argv[i];
-        i++;
-    }
-    return string;
-}
-
-void printArr(const int* arr, int argc)
-{
-    printf("arr =");
-    for (int i = 0; i < argc - 1; i++)
-        printf("%d; ", arr[i]);
-    printf("\n");
-}
-
-void printStrings(int argc, char** strings)
-{
-    for (int i = 0; i < argc - 1; i++)
-        printf("%s\n", strings[i]);
 }
