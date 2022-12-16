@@ -60,7 +60,6 @@ char** sorting(char** str, const int* mas, int argc)
         for (int j = 0; j < argc - 1; j++)
             if (mas[j] == length(str[i]))
             {
-                temp = (char*)calloc(mas[j], sizeof(char));
                 temp = str[j];
                 str[j] = str[i];
                 str[i]=temp;
