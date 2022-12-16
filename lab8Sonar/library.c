@@ -65,6 +65,8 @@ char** sorting(char** str, const int* mas, int argc)
                 str[j] = str[i];
                 str[i]=temp;
             }
+    temp = NULL;
+    free(temp);
     return str;
 }
 
