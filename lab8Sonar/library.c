@@ -42,6 +42,7 @@ void merge_sort(int** mas, int l, int r)
         mas[0][l + step] = tmp[0][step];
         mas[1][l+step] = tmp[1][step];
     }
+    free(tmp);
 }
 
 void sorting(char** str, int** arr, int size)
