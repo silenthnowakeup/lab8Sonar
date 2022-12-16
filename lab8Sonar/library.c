@@ -31,7 +31,7 @@ void merge_sort(int* mas, int l, int r)
     merge_sort(mas, mid + 1, r);
     int i = l;  // начало первого пути
     int j = mid + 1; // начало второго пути
-    int* tmp = (int*)malloc(1 * sizeof(int)); // дополнительный массив
+    int* tmp = (int*)malloc(l+r * sizeof(int)); // дополнительный массив
     for (int step = 0; step < r - l + 1; step++) // для всех элементов дополнительного массива
     {
         // записываем в формируемую последовательность меньший из элементов двух путей
@@ -56,11 +56,12 @@ void merge_sort(int* mas, int l, int r)
 char** sorting(char** str, const int* mas, int argc)
 {
     char* temp;
+    temp = (char*)calloc(mas[j], sizeof(char));
     for (int i = 0; i < argc - 1; i++)
         for (int j = 0; j < argc - 1; j++)
             if (mas[j] == length(str[i]))
             {
-                temp = (char*)calloc(mas[j], sizeof(char));
+                temp = (char*)realloc(temp,mas[j] * sizeof(char));
                 temp = str[j];
                 str[j] = str[i];
                 str[i]=temp;
