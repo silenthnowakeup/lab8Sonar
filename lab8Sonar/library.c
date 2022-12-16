@@ -50,6 +50,7 @@ void merge_sort(int* mas, int l, int r)
     // переписываем сформированную последовательность в исходный массив
     for (int step = 0; step < r - l + 1; step++)
         mas[l + step] = tmp[step];
+    free(tmp);
 }
 
 char** sorting(char** str, const int* mas, int argc)
